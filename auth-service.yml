@@ -8,8 +8,8 @@ spring:
 
   datasource:
     url: jdbc:mysql://localhost:3306/hireconnect_auth_db?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
-    username: hireconnect_user
-    password: password123
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
     driver-class-name: com.mysql.cj.jdbc.Driver
 
   jpa:
