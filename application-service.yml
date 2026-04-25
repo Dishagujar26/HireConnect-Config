@@ -19,3 +19,30 @@ spring:
 logging:
   file:
     path: ../logs/application-service
+
+resilience4j:
+  circuitbreaker:
+    instances:
+      jobService:
+        registerHealthIndicator: true
+        slidingWindowSize: 10
+        permittedNumberOfCallsInHalfOpenState: 3
+        minimumNumberOfCalls: 5
+        waitDurationInOpenState: 5s
+        failureRateThreshold: 50
+      profileService:
+        registerHealthIndicator: true
+        slidingWindowSize: 10
+        permittedNumberOfCallsInHalfOpenState: 3
+        minimumNumberOfCalls: 5
+        waitDurationInOpenState: 5s
+        failureRateThreshold: 50
+  retry:
+    instances:
+      jobService:
+        maxAttempts: 3
+        waitDuration: 2s
+      profileService:
+        maxAttempts: 3
+        waitDuration: 2s
+
