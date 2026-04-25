@@ -30,3 +30,35 @@ logging:
     com.hireconnect.profileservice: DEBUG
     org.springframework.web: INFO
     org.hibernate.SQL: WARN
+
+resilience4j:
+  circuitbreaker:
+    instances:
+      jobService:
+        registerHealthIndicator: true
+        slidingWindowSize: 10
+        permittedNumberOfCallsInHalfOpenState: 3
+        slidingWindowType: COUNT_BASED
+        minimumNumberOfCalls: 5
+        waitDurationInOpenState: 5s
+        failureRateThreshold: 50
+        eventConsumerBufferSize: 10
+      applicationService:
+        registerHealthIndicator: true
+        slidingWindowSize: 10
+        permittedNumberOfCallsInHalfOpenState: 3
+        minimumNumberOfCalls: 5
+        waitDurationInOpenState: 5s
+        failureRateThreshold: 50
+
+  retry:
+    instances:
+      jobService:
+        maxAttempts: 3
+        waitDuration: 2s
+        enableExponentialBackoff: true
+        exponentialBackoffMultiplier: 2
+      applicationService:
+        maxAttempts: 3
+        waitDuration: 2s
+
