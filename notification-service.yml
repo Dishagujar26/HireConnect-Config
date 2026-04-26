@@ -50,3 +50,8 @@ logging:
     root: INFO
     com.hireconnect.notificationservice: DEBUG
     org.springframework.security: INFO
+
+management:
+  health:
+    mail:
+      enabled: false
