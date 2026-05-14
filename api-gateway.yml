@@ -5,22 +5,11 @@ spring:
   servlet:
     multipart:
       enabled: false
+
   data:
     redis:
       host: localhost
       port: 6379
-
-management:
-  endpoints:
-    web:
-      exposure:
-        include: "*"
-  endpoint:
-    health:
-      show-details: always
-  info:
-    env:
-      enabled: true
 
   cloud:
     gateway:
@@ -31,66 +20,79 @@ management:
               uri: lb://AUTH-SERVICE
               predicates:
                 - Path=/api/v1/auth/**
+
             - id: profile-service
               uri: lb://PROFILE-SERVICE
               predicates:
                 - Path=/api/profiles/**
+
             - id: job-service
               uri: lb://JOB-SERVICE
               predicates:
                 - Path=/api/jobs/**
+
             - id: application-service
               uri: lb://APPLICATION-SERVICE
               predicates:
                 - Path=/api/applications/**
+
             - id: interview-service
               uri: lb://INTERVIEW-SERVICE
               predicates:
                 - Path=/api/interviews/**
+
             - id: notification-service
               uri: lb://NOTIFICATION-SERVICE
               predicates:
                 - Path=/api/notifications/**
+
             - id: payment-service
               uri: lb://PAYMENT-SERVICE
               predicates:
                 - Path=/api/payments/**
+
             - id: auth-service-docs
               uri: lb://AUTH-SERVICE
               predicates:
                 - Path=/aggregate/auth/v3/api-docs
               filters:
                 - SetPath=/v3/api-docs
+
             - id: profile-service-docs
               uri: lb://PROFILE-SERVICE
               predicates:
                 - Path=/aggregate/profile/v3/api-docs
               filters:
                 - SetPath=/v3/api-docs
+
             - id: job-service-docs
               uri: lb://JOB-SERVICE
               predicates:
                 - Path=/aggregate/job/v3/api-docs
               filters:
                 - SetPath=/v3/api-docs
+
             - id: application-service-docs
               uri: lb://APPLICATION-SERVICE
               predicates:
                 - Path=/aggregate/application/v3/api-docs
               filters:
                 - SetPath=/v3/api-docs
+
             - id: interview-service-docs
               uri: lb://INTERVIEW-SERVICE
               predicates:
                 - Path=/aggregate/interview/v3/api-docs
               filters:
                 - SetPath=/v3/api-docs
+
             - id: notification-service-docs
               uri: lb://NOTIFICATION-SERVICE
               predicates:
                 - Path=/aggregate/notification/v3/api-docs
               filters:
                 - SetPath=/v3/api-docs
+
             - id: payment-service-docs
               uri: lb://PAYMENT-SERVICE
               predicates:
@@ -98,9 +100,24 @@ management:
               filters:
                 - SetPath=/v3/api-docs
 
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+  endpoint:
+    health:
+      show-details: always
+
+  info:
+    env:
+      enabled: true
+
 logging:
   file:
     path: ../logs/api-gateway
+
   level:
     com.hireconnect.apigateway: INFO
     org.springframework.security: DEBUG
@@ -111,15 +128,21 @@ springdoc:
     urls:
       - name: auth-service
         url: /aggregate/auth/v3/api-docs
+
       - name: profile-service
         url: /aggregate/profile/v3/api-docs
+
       - name: job-service
         url: /aggregate/job/v3/api-docs
+
       - name: application-service
         url: /aggregate/application/v3/api-docs
+
       - name: interview-service
         url: /aggregate/interview/v3/api-docs
+
       - name: notification-service
         url: /aggregate/notification/v3/api-docs
+
       - name: payment-service
         url: /aggregate/payment/v3/api-docs
