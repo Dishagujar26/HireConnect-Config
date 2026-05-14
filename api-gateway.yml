@@ -5,6 +5,22 @@ spring:
   servlet:
     multipart:
       enabled: false
+  data:
+    redis:
+      host: localhost
+      port: 6379
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
+  info:
+    env:
+      enabled: true
 
   cloud:
     gateway:
