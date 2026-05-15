@@ -113,7 +113,7 @@ spring:
                 - SetPath=/v3/api-docs
 
 jwt:
-  secret: your_jwt_secret_key_here_must_be_long_enough
+  secret: ${JWT_SECRET}
 
 management:
   endpoints:
