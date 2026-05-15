@@ -43,6 +43,10 @@ spring:
       properties:
         spring.json.trusted.packages: "*"
 
+app:
+  kafka:
+    notification-topic: hireconnect-notifications
+
 logging:
   file:
     path: ../logs/notification-service
