@@ -65,6 +65,7 @@ auth:
   reset-otp-expiration-minutes: 10
   oauth-success-redirect-url: http://localhost:4200/oauth-success
   oauth-failure-redirect-url: http://localhost:4200/login
+  admin-email: ${ADMIN_EMAIL:hireconnect.admin@gmail.com}
 
 logging:
   file:
