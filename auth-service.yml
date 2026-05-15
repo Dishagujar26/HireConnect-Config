@@ -8,17 +8,17 @@ spring:
 
   data:
     redis:
-      host: localhost
+      host: 127.0.0.1
       port: 6379
 
   datasource:
-    url: jdbc:mysql://localhost:3307/hireconnect_auth_db?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+    url: jdbc:mysql://127.0.0.1:3306/hireconnect_auth_db?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
     username: ${DB_USERNAME}
     password: ${DB_PASSWORD}
     driver-class-name: com.mysql.cj.jdbc.Driver
 
   kafka:
-    bootstrap-servers: localhost:9092
+    bootstrap-servers: 127.0.0.1:9092
     producer:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
@@ -63,8 +63,8 @@ jwt:
 
 auth:
   reset-otp-expiration-minutes: 10
-  oauth-success-redirect-url: http://localhost:4200/oauth-success
-  oauth-failure-redirect-url: http://localhost:4200/login
+  oauth-success-redirect-url: http://127.0.0.1:4200/oauth-success
+  oauth-failure-redirect-url: http://127.0.0.1:4200/login
 
 logging:
   file:
